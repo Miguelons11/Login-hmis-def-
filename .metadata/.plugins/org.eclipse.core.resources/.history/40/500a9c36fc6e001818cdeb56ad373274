@@ -1,0 +1,128 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout height="594px">
+   <vaadin-horizontal-layout>
+    <vaadin-label style-name="colored" plain-text _id="labelBienvenida">
+      Bienvenido, rellene los siguientes campos para completar el registro 
+    </vaadin-label>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="750px">
+    <vaadin-label style-name="colored" plain-text>
+      Nombre 
+    </vaadin-label>
+    <vaadin-text-field height="25px" _id="nombreText"></vaadin-text-field>
+    <vaadin-vertical-layout size-auto :right></vaadin-vertical-layout>
+    <vaadin-vertical-layout size-auto></vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="376px">
+    <vaadin-label style-name="colored" plain-text>
+      Apellidos 
+    </vaadin-label>
+    <vaadin-text-field width="185px" height="25px" _id="apellidosText"></vaadin-text-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="376px">
+    <vaadin-label style-name="colored" plain-text>
+      Apodo 
+    </vaadin-label>
+    <vaadin-text-field height="25px" _id="apodoText"></vaadin-text-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width-full height="25px">
+    <vaadin-label style-name="colored" plain-text>
+      Edad 
+    </vaadin-label>
+    <vaadin-combo-box width="100px" height="25px" data-item-type="java.lang.String" _id="dia">
+     <option item="1">1</option>
+     <option item="2">2</option>
+     <option item="3">3</option>
+     <option item="4">4</option>
+     <option item="5">5</option>
+     <option item="6">6</option>
+     <option item="7">7</option>
+     <option item="8">8</option>
+     <option item="9">9</option>
+     <option item="10">10</option>
+     <option item="11">11</option>
+     <option item="12">12</option>
+     <option item="13">13</option>
+     <option item="14">14</option>
+     <option item="15">15</option>
+     <option item="16">16</option>
+     <option item="17">17</option>
+     <option item="18">18</option>
+     <option item="19">19</option>
+     <option item="20">20</option>
+     <option item="21">21</option>
+     <option item="22">22</option>
+     <option item="23">23</option>
+     <option item="24">24</option>
+     <option item="25">25</option>
+     <option item="26">26</option>
+     <option item="27">27</option>
+     <option item="28">28</option>
+     <option item="29">29</option>
+     <option item="30">30</option>
+     <option item="31">31</option>
+    </vaadin-combo-box>
+    <vaadin-combo-box width="100px" height="25px" data-item-type="java.lang.String" _id="mes">
+     <option item="1">1</option>
+     <option item="2">2</option>
+     <option item="3">3</option>
+     <option item="4">4</option>
+     <option item="5">5</option>
+     <option item="6">6</option>
+     <option item="7">7</option>
+     <option item="8">8</option>
+     <option item="9">9</option>
+     <option item="10">10</option>
+     <option item="11">11</option>
+     <option item="12">12</option>
+    </vaadin-combo-box>
+    <vaadin-combo-box width="100px" height="25px" data-item-type="java.lang.String" _id="ano">
+     <option item="1">2006</option>
+     <option item="2">2005</option>
+     <option item="3">2004</option>
+     <option item="4">2003</option>
+     <option item="5">2002</option>
+     <option item="6">2001</option>
+     <option item="7">2000</option>
+     <option item="8">1999</option>
+     <option item="9">1998</option>
+     <option item="10">1997</option>
+     <option item="11">1996</option>
+     <option item="12">1995</option>
+    </vaadin-combo-box>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="562px">
+    <vaadin-label style-name="colored" plain-text>
+      Correo 
+    </vaadin-label>
+    <vaadin-text-field height="25px" _id="correoText"></vaadin-text-field>
+    <vaadin-vertical-layout width-auto height="124px"></vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="373px" height="58px">
+    <vaadin-label style-name="colored" plain-text>
+      Contraseña 
+    </vaadin-label>
+    <vaadin-password-field width="189px" height="25px" _id="contrasenaText"></vaadin-password-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="376px">
+    <vaadin-label style-name="colored" plain-text>
+      Confirmar contraseña 
+    </vaadin-label>
+    <vaadin-password-field height="25px" _id="confirmarContrasenaText"></vaadin-password-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="400px">
+    <vaadin-button style-name="primary" plain-text _id="botonEviar" :middle :right>
+      Enviar 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout></vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>

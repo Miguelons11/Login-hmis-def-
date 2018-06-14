@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+  <vaadin-vertical-layout height="594px">
+   <vaadin-horizontal-layout>
+    <vaadin-label style-name="colored" plain-text _id="labelBienvenida">
+      Bienvenido, rellene los siguientes campos para completar el registro 
+    </vaadin-label>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="750px">
+    <vaadin-label style-name="colored" plain-text>
+      Nombre 
+    </vaadin-label>
+    <vaadin-text-field height="25px" _id="nombreText"></vaadin-text-field>
+    <vaadin-vertical-layout size-auto :right></vaadin-vertical-layout>
+    <vaadin-vertical-layout size-auto></vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="376px">
+    <vaadin-label style-name="colored" plain-text>
+      Apellidos 
+    </vaadin-label>
+    <vaadin-text-field width="185px" height="25px" _id="apellidosText"></vaadin-text-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="562px">
+    <vaadin-label style-name="colored" plain-text>
+      Correo 
+    </vaadin-label>
+    <vaadin-text-field height="25px" _id="correoText"></vaadin-text-field>
+    <vaadin-vertical-layout width-auto height="124px"></vaadin-vertical-layout>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="373px" height="58px">
+    <vaadin-label style-name="colored" plain-text>
+      Contraseña 
+    </vaadin-label>
+    <vaadin-password-field width="189px" height="25px" _id="contrasenaText"></vaadin-password-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="376px">
+    <vaadin-label style-name="colored" plain-text>
+      Confirmar contraseña 
+    </vaadin-label>
+    <vaadin-password-field height="25px" _id="confirmarContrasenaText"></vaadin-password-field>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout width="400px">
+    <vaadin-button style-name="primary" plain-text _id="botonEviar" :middle :right>
+      Enviar 
+    </vaadin-button>
+   </vaadin-horizontal-layout>
+   <vaadin-horizontal-layout></vaadin-horizontal-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>

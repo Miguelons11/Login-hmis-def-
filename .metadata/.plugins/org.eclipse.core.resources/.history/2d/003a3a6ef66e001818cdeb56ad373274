@@ -1,0 +1,52 @@
+package com.example.Login;
+
+import java.util.Calendar;
+
+import org.orm.PersistentException;
+
+import com.vaadin.navigator.View;
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+
+import com.vaadin.ui.Image;
+
+import usuario.IUsuarioNoRegistrado;
+import usuario.BD_Principal;
+import usuario.BD_Usuario;
+ 
+public class Registrarse extends Registrarse_ventana implements View {
+	
+	IUsuarioNoRegistrado usr = new BD_Principal() ;
+	String nombre;
+	String apellidos;
+	String correo;
+	String contrasena;
+	String fecha;
+	public Registrarse() {
+		botonEviar.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				
+				
+				 nombre = nombreText.getValue();
+				 apellidos = apellidosText.getValue();
+				correo = correoText.getValue();
+				contrasena = contrasenaText.getValue();
+				fecha=Calendar.DAY_OF_MONTH+"/"+Calendar.MONTH+"/"+Calendar.YEAR;
+				registrarse();
+
+			}
+		});
+	}
+
+	public void registrarse() {
+			usr.registrarse(correo, nombre, contrasena, true, fecha,fecha);
+	
+	}
+
+	public void inicializar() {
+
+	}
+
+}

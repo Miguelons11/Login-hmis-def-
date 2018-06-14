@@ -1,0 +1,65 @@
+package usuario;
+
+import java.util.List;
+import java.util.Vector;
+
+import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
+
+import usuario.Usuario;
+
+public class BD_Usuario {
+	public Vector<Usuario> _contiene_usuario = new Vector<Usuario>();
+	public BD_Principal _bd_prin_usuario;
+
+	public Usuario crearUsuario(String aEmail, String aUsername, String aPassword_, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) {
+		throw new UnsupportedOperationException();
+	}
+
+	public Usuario eliminarUsuario(int aIdUsuario) {
+		throw new UnsupportedOperationException();
+	}
+
+	public List listarUsuarios() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Usuario logIn(String aUsername, String aPassword) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void logOut() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Usuario modificarDatos() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void modificarDatosPerfil() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Usuario registrarse(String aEmail, String aUsername, String aPassword, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) throws Exception {
+		int idUsuario = -1;
+		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
+				.beginTransaction();
+		Usuario usr=new Usuario();;
+		try {
+			usr = usuario.UsuarioDAO.createUsuario();
+			usr.setEmail(aEmail);
+			usr.setUsername(aUsername);
+			usr.setPassword(aPassword);
+			usr.setAdmin(aAdmin);
+			usr.setFechaCreacion(aFechaCreacion);
+			usr.setFechaUltimoAcceso(aFechaUltimoAcceso);
+			usuario.UsuarioDAO.save(usr);
+			idUsuario = usr.getORMID();
+			t.commit();
+
+		} catch (Exception e) {
+			t.rollback();
+		}
+		return usr;
+	}
+}

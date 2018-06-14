@@ -1,0 +1,54 @@
+package com.example.myapplication;
+
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+
+import org.orm.PersistentException;
+
+import com.vaadin.ui.Button;
+import com.vaadin.ui.Button.ClickEvent;
+
+import usuario.BD_Principal;
+import usuario.IUsuario;
+import usuario.IUsuarioNoRegistrado;
+import usuario.Usuario;
+
+public class Editar_informacion extends Editar_informacion_ventana{
+
+	IUsuario usr = new BD_Principal() ;
+	String nombre;
+	String correo;
+	String contrasena;
+	
+	public Editar_informacion() {
+		botonEviar.addClickListener(new Button.ClickListener() {
+
+			@Override
+			public void buttonClick(ClickEvent event) {
+				
+				
+				 nombre = nombreText.getValue();
+				correo = correoText.getValue();
+				contrasena = contrasenaText.getValue();
+				
+				if(contrasena== confirmarContrasenaText.getValue()) {
+					editarInformacion();
+				}else {
+					passwordNoMatch.setVisible(true);
+				}
+
+			}
+
+			private void editarInformacion() {
+				try {
+					Usuario aux= usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='"+correo+"'",null);
+					usuarioYaExiste.setVisible(true);
+			} catch (PersistentException e) {
+				// TODO Auto-generated catch block
+				Usuario usuario= usr.editarInformacion(correo, nombre, contrasena);
+
+			}
+			}
+		});
+	}
+}

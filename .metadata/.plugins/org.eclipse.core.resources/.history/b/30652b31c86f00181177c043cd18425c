@@ -1,0 +1,16 @@
+package com.example.myapplication;
+
+import com.vaadin.navigator.View;
+
+import usuario.BD_Principal;
+import usuario.IAdministrador;
+
+public class Listar_usuarios extends Listar_usuarios_ventana implements View {
+
+	IAdministrador adm=new BD_Principal();
+	
+	
+	public void cargarUsuarios() {
+		List lista= adm.cargarUsuarios();
+	}
+}

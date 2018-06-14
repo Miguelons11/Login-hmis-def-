@@ -1,0 +1,7 @@
+package com.example.myapplication;
+
+import com.vaadin.navigator.View;
+
+public class Listar_usuarios extends Listar_usuarios_ventana implements View {
+
+}

@@ -1,0 +1,14 @@
+package com.example.myapplication;
+
+import com.vaadin.navigator.View;
+
+public class Administrador  extends Administrador_ventana implements View {
+/*	private JLabel _nombreUsuarioLabel;
+	private Image _avatar;
+	private JButton _listaVideos;
+	private JButton _listaUsuarios;
+	private JButton _listaCategorias;*/
+
+
+
+}

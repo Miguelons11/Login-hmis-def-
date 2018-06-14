@@ -1,0 +1,9 @@
+package usuario;
+
+public interface IUsuario {
+
+	public Usuario logIn(String aUsername, String aPassword) ;
+
+	public void modificarDatosPerfil() ;
+	public void logOut() ;
+}

@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+ <head>
+  <meta charset="UTF-8">
+  <meta name="design-properties" content="{&quot;RULERS_VISIBLE&quot;:true,&quot;GUIDELINES_VISIBLE&quot;:false,&quot;SNAP_TO_OBJECTS&quot;:true,&quot;SNAP_TO_GRID&quot;:true,&quot;SNAPPING_DISTANCE&quot;:10,&quot;GENERATE_GETTERS&quot;:false,&quot;JAVA_SOURCES_ROOT&quot;:&quot;src/main/java&quot;,&quot;THEME&quot;:&quot;mytheme&quot;}">
+  <meta name="vaadin-version" content="8.0.5">
+ </head>
+ <body>
+ <vaadin-vertical-layout size-full>
+   <vaadin-vertical-layout size-auto :middle :center>
+    <vaadin-vertical-layout size-full>
+     <vaadin-vertical-layout size-auto :middle :center>
+      <vaadin-label style-name="colored" height="25px" plain-text>
+        Email o nombre de usuario 
+      </vaadin-label>
+      <vaadin-text-field style-name="colored" _id="usuarioText"></vaadin-text-field>
+      <vaadin-label style-name="colored" plain-text>
+        Contraseña 
+      </vaadin-label>
+      <vaadin-password-field _id="contrasenaText"></vaadin-password-field>
+      <vaadin-link caption="Recordar contraseña"></vaadin-link>
+      <vaadin-link caption="¿Aún no tienes cuenta?Crea tu cuenta"></vaadin-link>
+      <vaadin-button style-name="primary" plain-text _id="botonEnviar">
+        Enviar 
+      </vaadin-button>
+     </vaadin-vertical-layout>
+    </vaadin-vertical-layout>
+   </vaadin-vertical-layout>
+  </vaadin-vertical-layout>
+ </body>
+</html>

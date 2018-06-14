@@ -1,0 +1,7 @@
+package com.example.Login;
+
+import com.vaadin.navigator.View;
+
+public class Usuario_registrado extends Usuario_registrado_ventana implements View {
+
+}

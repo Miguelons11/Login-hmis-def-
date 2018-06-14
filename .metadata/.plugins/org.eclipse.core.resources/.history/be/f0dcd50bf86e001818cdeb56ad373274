@@ -1,0 +1,48 @@
+package usuario;
+
+import java.util.List;
+
+import org.orm.PersistentException;
+
+public class BD_Principal implements IUsuarioNoRegistrado, IUsuario, IAdministrador {
+	public BD_Usuario _bd_usuario=new BD_Usuario(); 
+	public Usuario user;
+
+	public Usuario registrarse(String aEmail, String aUsername, String aPassword, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) {
+		try{
+			user=_bd_usuario.registrarse(aEmail, aUsername, aPassword, aAdmin, aFechaCreacion, aFechaUltimoAcceso);
+			
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		return user;
+	}
+
+	public Usuario logIn(String aUsername, String aPassword) {
+		throw new UnsupportedOperationException();
+	}
+
+	public void modificarDatosPerfil() {
+		throw new UnsupportedOperationException();
+	}
+
+	public void logOut() {
+		throw new UnsupportedOperationException();
+	}
+
+	public List listarUsuarios() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Usuario crearUsuario(String aEmail, String aUsername, String aPassword_, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) {
+		throw new UnsupportedOperationException();
+	}
+
+	public Usuario modificarDatos() {
+		throw new UnsupportedOperationException();
+	}
+
+	public Usuario eliminarUsuario(int aIdUsuario) {
+		throw new UnsupportedOperationException();
+	}
+}
