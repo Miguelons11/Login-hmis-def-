@@ -14,8 +14,8 @@ public class Inicio_sesion extends Inicio_sesion_ventana implements View {
 
 	String nombreUsuario;
 	String contrasena;
-	public static int id=1;
-	public static boolean activo;
+	public static int id;
+	public static boolean activo=false;
 
 	public Inicio_sesion() {
 		botonEnviar.addClickListener(new Button.ClickListener() {
@@ -24,6 +24,7 @@ public class Inicio_sesion extends Inicio_sesion_ventana implements View {
 			public void buttonClick(ClickEvent event) {
 				nombreUsuario = usuarioText.getValue();
 				contrasena = contrasenaText.getValue();
+				activo=false;
 				iniciarSesion();
 			}
 		});
@@ -44,11 +45,11 @@ public class Inicio_sesion extends Inicio_sesion_ventana implements View {
 		try {
 		Usuario usr = usuario.logIn(nombreUsuario, contrasena);
 		
-		activo=true;
 
 		
-		
-		if (usr.getAdmin() == false) {
+		if (!usr.getAdmin()) {
+			id = usr.getORMID();
+			activo=true;
 
 			UI.getCurrent().getNavigator().navigateTo("inicioRegistrado");
 
@@ -58,8 +59,8 @@ public class Inicio_sesion extends Inicio_sesion_ventana implements View {
 		
 		}
 
-		id = usr.getORMID();
 		
+
 		}catch(NullPointerException n) {
 			labelException.setVisible(true);
 

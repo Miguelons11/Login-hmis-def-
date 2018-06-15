@@ -4,12 +4,15 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 import org.orm.PersistentException;
+import org.orm.PersistentTransaction;
 
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Button;
 import com.vaadin.ui.Button.ClickEvent;
 
 import com.vaadin.ui.Image;
+import com.vaadin.ui.Notification;
+import com.vaadin.ui.UI;
 
 import usuario.IUsuarioNoRegistrado;
 import usuario.Usuario;
@@ -38,7 +41,12 @@ public class Registrarse extends Registrarse_ventana implements View {
 				fecha=c1.DAY_OF_MONTH+"/"+c1.MONTH+"/"+c1.YEAR;
 				
 				if(contrasena.equals(confirmarContrasenaText.getValue())) {
-					registrarse();
+					try {
+						registrarse();
+					} catch (PersistentException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}else {
 					passwordNoMatch.setVisible(true);
 				}
@@ -47,14 +55,25 @@ public class Registrarse extends Registrarse_ventana implements View {
 		});
 	}
 
-	public void registrarse() {
+	public void registrarse() throws PersistentException {
+		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
+				.beginTransaction();
 		try {
+			
 				Usuario aux= usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='"+correoText.getValue()+"'",null);
-				usuarioYaExiste.setVisible(true);
-		} catch (PersistentException e) {
+				t.commit(); 
+				if(aux==null) {
+					Usuario usuario= usr.registrarse(correo, nombre, contrasena, false, fecha,fecha);
+					Notification.show("Usuario registrado correctamente").setDelayMsec(1000);
+					Inicio_sesion.id= usuario.getORMID();
+					UI.getCurrent().getNavigator().navigateTo("inicioRegistrado");
+				}else{
+					usuarioYaExiste.setVisible(true);
+				}
+				
+		} catch (NullPointerException e) {
 			// TODO Auto-generated catch block
-			Usuario usuario= usr.registrarse(correo, nombre, contrasena, false, fecha,fecha);
-
+			e.getMessage();
 		}
 	
 	}

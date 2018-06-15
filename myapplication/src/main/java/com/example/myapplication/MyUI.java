@@ -33,6 +33,8 @@ public class MyUI extends UI {
 		nv.addView("inicioAdministrador", new Administrador());
 		nv.addView("editarInformacion", new Editar_informacion());
 		nv.addView("listarUsuarios", new Listar_usuarios());
+		
+			
     }
 
     @WebServlet(urlPatterns = "/*", name = "MyUIServlet", asyncSupported = true)

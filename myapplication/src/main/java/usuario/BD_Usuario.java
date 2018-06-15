@@ -14,20 +14,30 @@ import usuario.Usuario;
 public class BD_Usuario {
 	public Vector<Usuario> _contiene_usuario = new Vector<Usuario>();
 	public BD_Principal _bd_prin_usuario;
-	List lista= new ArrayList<Usuario>();
+	byte numero=0;
 
 	public Usuario crearUsuario(String aEmail, String aUsername, String aPassword_, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) {
 		throw new UnsupportedOperationException();
 	}
 
-	public Usuario eliminarUsuario(int aIdUsuario) {
-		throw new UnsupportedOperationException();
+	public Usuario eliminarUsuario(String correo) throws PersistentException {
+		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
+				.beginTransaction();
+		
+		try {
+			Usuario usr = usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='"+correo+"'",null);
+			usuario.UsuarioDAO.delete(usr);
+			t.commit();
+			return usr;
+			
+		} catch (PersistentException e) {
+			t.rollback();
+
+		}
+		return null;
 	}
 
-	public List listarUsuarios() {
-		throw new UnsupportedOperationException();
-	}
-
+	
 	public Usuario logIn(String aUsername, String aPassword) throws PersistentException{
 		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
 				.beginTransaction();
@@ -101,8 +111,21 @@ public class BD_Usuario {
 		return usr;
 	}
 
-	public List cargarUsuarios() throws PersistentException {
-		 lista= usuario.UsuarioDAO.queryUsuario("Usuario.admin='"+0+"'", null);
+	
+	public List<Usuario> cargarUsuarios() throws PersistentException {
+		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
+				.beginTransaction();
+		List<Usuario> lista=new ArrayList<Usuario>();
+		Usuario[] aux;
+		try {
+			aux= usuario.UsuarioDAO.listUsuarioByQuery("Usuario.admin='"+ 0 +"'", null);
+			for(int i=0;i<=aux.length;i++) {
+				lista.add(aux[i]);
+			}
+			t.commit();
+		}catch(Exception e) {
+		t.rollback();
+		}
 		return lista;
 	}
 }

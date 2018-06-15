@@ -4,13 +4,12 @@ import java.util.List;
 
 public interface IAdministrador {
 
-	public List listarUsuarios();
 
 	public Usuario crearUsuario(String aEmail, String aUsername, String aPassword_, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso);
 
 	public Usuario modificarDatos();
 
-	public Usuario eliminarUsuario(int aIdUsuario) ;
+	public Usuario eliminarUsuario(String correo) ;
 
-	public List cargarUsuarios();
+	public List<Usuario> cargarUsuarios();
 }

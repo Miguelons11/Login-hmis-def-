@@ -8,7 +8,6 @@ import org.orm.PersistentException;
 public class BD_Principal implements IUsuarioNoRegistrado, IUsuario, IAdministrador {
 	public BD_Usuario _bd_usuario=new BD_Usuario(); 
 	public Usuario user;
-	List lista= new ArrayList<Usuario>();
 	public Usuario registrarse(String aEmail, String aUsername, String aPassword, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) {
 		try{
 			user=_bd_usuario.registrarse(aEmail, aUsername, aPassword, aAdmin, aFechaCreacion, aFechaUltimoAcceso);
@@ -65,7 +64,9 @@ public class BD_Principal implements IUsuarioNoRegistrado, IUsuario, IAdministra
 	}
 
 	@Override
-	public List cargarUsuarios() {
+	public List<Usuario> cargarUsuarios() {
+		List<Usuario> lista=new ArrayList<Usuario>();
+
 		try {
 			 lista= _bd_usuario.cargarUsuarios();
 		} catch (PersistentException e) {
@@ -73,5 +74,16 @@ public class BD_Principal implements IUsuarioNoRegistrado, IUsuario, IAdministra
 			e.printStackTrace();
 		}
 		return lista;
+	}
+
+	@Override
+	public Usuario eliminarUsuario(String correo) {
+
+		try{
+			Usuario user=_bd_usuario.eliminarUsuario(correo);
+		}catch(PersistentException e) {
+			e.printStackTrace();
+		}
+		return user;
 	}
 	}
