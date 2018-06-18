@@ -16,26 +16,43 @@ import usuario.Usuario;
 public class RegistroOk {
 
 	BD_Usuario bd= new BD_Usuario();
-	Usuario user= new Usuario();
+	Usuario usr= new Usuario();
 	public boolean in;
+	String email="pruebaRegistro";
+	String name="pruebaRegistro";
+	String password="pruebaRegistro";
+			
 
 	@Test
-	public void registroOkTest() throws PersistentException {
-		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession().beginTransaction();
-		try {
-			user = bd.registrarse("pruebatest", "prueba", "prueba", false, "", "");
-			Usuario aux = usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='" + "pruebatest" + "'", null);
-			t.commit();
-			if (aux == null) {
-				in=false;
-			} else {
-				in=true;
-			}
-
-		} catch (PersistentException e) {
-			t.rollback();
+	public void registroOkTest() throws PersistentException  {
+		registrarUsuario();
+		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
+				.beginTransaction();
+		Usuario aux= usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='"+email+"'",null);
+		t.commit(); 
+		if(aux!=null) {
+			in=true;
+			eliminarUsuario();
 		}
 		assertTrue(in);
+	}
+	private void registrarUsuario() {
+		try {
+			bd.registrarse(email, name, password, false, "", "");
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void eliminarUsuario() {
+		try {
+			bd.eliminarUsuario(email);
+		} catch (PersistentException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 }
 		

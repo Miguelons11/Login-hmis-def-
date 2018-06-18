@@ -48,6 +48,7 @@ public class BD_Usuario {
 			 Usuario usr = usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='"+aUsername+"'",null);
 			usr.setFechaUltimoAcceso(day+"/"+month+"/"+year);
 			usuario.UsuarioDAO.save(usr);
+			Inicio_sesion.id=usr.getID();
 			t.commit();
 			return usr;
 			
@@ -67,7 +68,7 @@ public class BD_Usuario {
 		int idUsuario = -1;
 		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
 				.beginTransaction();
-		Usuario usr=new Usuario();;
+		Usuario usr=new Usuario();
 		try {
 			usr = usuario.UsuarioDAO.createUsuario();
 			usr.setEmail(aEmail);
