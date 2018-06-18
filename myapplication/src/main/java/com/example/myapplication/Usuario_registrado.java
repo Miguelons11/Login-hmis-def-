@@ -13,21 +13,13 @@ import usuario.Usuario;
 public class Usuario_registrado extends Usuario_registrado_ventana implements View {
 
 	public Usuario_registrado() {
-		if(Inicio_sesion.activo==true) {
-			try {
-				
-				Usuario usr = usuario.UsuarioDAO.getUsuarioByORMID(Inicio_sesion.id) ;
-				nombreText.setValue(usr.getUsername());
-			
-			} catch (PersistentException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
+
+		
 		botonEditar.addClickListener(new Button.ClickListener() {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
+				System.out.println(Inicio_sesion.id);
 				UI.getCurrent().getNavigator().navigateTo("editarInformacion");
 			}
 		});
@@ -36,31 +28,11 @@ public class Usuario_registrado extends Usuario_registrado_ventana implements Vi
 			@Override
 			public void buttonClick(ClickEvent event) {
 				UI.getCurrent().getNavigator().navigateTo("");
-				//FALTA ESTABLECER EL ID DE INICIO DE SESIONA -1 
-				//CUANDO PODAMOS CONTROLAR EL CONSTRUCTOR
+				Inicio_sesion.id=0;
 			}
 		});
 	}
 	
-	public Usuario_registrado(String n) {
-		botonEditar.addClickListener(new Button.ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-				UI.getCurrent().getNavigator().navigateTo("editarInformacion");
-			}
-		});
-		botonLogOut.addClickListener(new Button.ClickListener() {
-			
-			@Override
-			public void buttonClick(ClickEvent event) {
-				UI.getCurrent().getNavigator().navigateTo("");
-				//FALTA ESTABLECER EL ID DE INICIO DE SESIONA -1 
-				//CUANDO PODAMOS CONTROLAR EL CONSTRUCTOR
-			}
-		});
-	}
-
 
 	
 }

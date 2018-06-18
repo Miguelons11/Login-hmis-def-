@@ -36,21 +36,19 @@ public class BD_Principal implements IUsuarioNoRegistrado, IUsuario, IAdministra
 		throw new UnsupportedOperationException();
 	}
 
-	public List listarUsuarios() {
-		throw new UnsupportedOperationException();
-	}
+
 
 	public Usuario crearUsuario(String aEmail, String aUsername, String aPassword_, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) {
-		throw new UnsupportedOperationException();
+		try{
+			user=_bd_usuario.registrarse(aEmail, aUsername, aPassword_, aAdmin, aFechaCreacion, aFechaUltimoAcceso);
+			
+		}catch(PersistentException e){
+			e.printStackTrace();
+		}
+		return user;
 	}
+	
 
-	public Usuario modificarDatos() {
-		throw new UnsupportedOperationException();
-	}
-
-	public Usuario eliminarUsuario(int aIdUsuario) {
-		throw new UnsupportedOperationException();
-	}
 
 	@Override
 	public Usuario editarInformacion(String correo, String nombre, String contrasena) {

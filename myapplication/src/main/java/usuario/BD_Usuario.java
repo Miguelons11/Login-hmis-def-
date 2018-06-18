@@ -1,6 +1,8 @@
 package usuario;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Vector;
 
@@ -15,10 +17,11 @@ public class BD_Usuario {
 	public Vector<Usuario> _contiene_usuario = new Vector<Usuario>();
 	public BD_Principal _bd_prin_usuario;
 	byte numero=0;
+	Calendar c1= Calendar.getInstance();
+	int year= c1.get(Calendar.YEAR);
+	int month= c1.get(Calendar.MONTH)+1;
+	int day= c1.get(Calendar.DAY_OF_MONTH);
 
-	public Usuario crearUsuario(String aEmail, String aUsername, String aPassword_, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) {
-		throw new UnsupportedOperationException();
-	}
 
 	public Usuario eliminarUsuario(String correo) throws PersistentException {
 		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
@@ -41,9 +44,10 @@ public class BD_Usuario {
 	public Usuario logIn(String aUsername, String aPassword) throws PersistentException{
 		PersistentTransaction t = usuario.HMIsPersistentManager.instance().getSession()
 				.beginTransaction();
-		
 		try {
-			Usuario usr = usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='"+aUsername+"'",null);
+			 Usuario usr = usuario.UsuarioDAO.loadUsuarioByQuery("Usuario.email='"+aUsername+"'",null);
+			usr.setFechaUltimoAcceso(day+"/"+month+"/"+year);
+			usuario.UsuarioDAO.save(usr);
 			t.commit();
 			return usr;
 			
@@ -51,20 +55,13 @@ public class BD_Usuario {
 			t.rollback();
 
 		}
-		return null;
+		return null ;
 	}
 
 	public void logOut() {
 		throw new UnsupportedOperationException();
 	}
 
-	public Usuario modificarDatos() {
-		throw new UnsupportedOperationException();
-	}
-
-	public void modificarDatosPerfil() {
-		throw new UnsupportedOperationException();
-	}
 
 	public Usuario registrarse(String aEmail, String aUsername, String aPassword, boolean aAdmin, String aFechaCreacion, String aFechaUltimoAcceso) throws PersistentException {
 		int idUsuario = -1;

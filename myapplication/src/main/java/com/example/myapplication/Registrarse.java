@@ -26,7 +26,10 @@ public class Registrarse extends Registrarse_ventana implements View {
 	String correo;
 	String contrasena;
 	String fecha;
-	Calendar c1= new GregorianCalendar();
+	Calendar c1= Calendar.getInstance();
+	int year= c1.get(Calendar.YEAR);
+	int month= c1.get(Calendar.MONTH)+1;
+	int day= c1.get(Calendar.DAY_OF_MONTH);
 	public Registrarse() {
 		labelBienvenida.setVisible(true);
 		botonEviar.addClickListener(new Button.ClickListener() {
@@ -38,7 +41,7 @@ public class Registrarse extends Registrarse_ventana implements View {
 				 nombre = nombreText.getValue();
 				correo = correoText.getValue();
 				contrasena = contrasenaText.getValue();
-				fecha=c1.DAY_OF_MONTH+"/"+c1.MONTH+"/"+c1.YEAR;
+				fecha=day+"/"+month+"/"+year;
 				
 				if(contrasena.equals(confirmarContrasenaText.getValue())) {
 					try {

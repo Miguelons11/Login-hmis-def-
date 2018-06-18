@@ -12,7 +12,7 @@ public class Administrador  extends Administrador_ventana implements View {
 			
 			@Override
 			public void buttonClick(ClickEvent event) {
-				UI.getCurrent().getNavigator().navigateTo("registrarse");
+				UI.getCurrent().getNavigator().navigateTo("crearUsuario");
 				
 			}
 		});
