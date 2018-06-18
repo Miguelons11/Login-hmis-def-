@@ -7,6 +7,7 @@ import org.orm.PersistentException;
 
 import com.vaadin.navigator.View;
 import com.vaadin.ui.Button;
+import com.vaadin.ui.Notification;
 import com.vaadin.ui.Button.ClickEvent;
 
 import usuario.BD_Principal;
@@ -55,7 +56,7 @@ public class Editar_informacion extends Editar_informacion_ventana implements Vi
 				} else {
 					passwordNoMatch.setVisible(true);
 				}
-
+				
 			}
 
 		});
@@ -64,5 +65,7 @@ public class Editar_informacion extends Editar_informacion_ventana implements Vi
 
 	private void editarInformacion() {
 		Usuario usuario = usr.editarInformacion(correo, nombre, contrasena);
+		Notification.show("Información editada correctamente").setDelayMsec(400);
+
 	}
 }

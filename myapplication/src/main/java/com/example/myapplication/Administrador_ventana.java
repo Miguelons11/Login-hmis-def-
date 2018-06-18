@@ -21,6 +21,7 @@ public class Administrador_ventana extends VerticalLayout {
 	protected Button botonListarUsuarios;
 	protected Button botonCrearUsuario;
 	protected Button botonModificarDatos;
+	protected Button botonLogout;
 
 	public Administrador_ventana() {
 		Design.read(this);

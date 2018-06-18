@@ -34,7 +34,16 @@ public class Administrador  extends Administrador_ventana implements View {
 				
 			}
 		});
+		botonLogout.addClickListener(new Button.ClickListener() {
+			
+			@Override
+			public void buttonClick(ClickEvent event) {
+				UI.getCurrent().getNavigator().navigateTo("");
+				Inicio_sesion.id=0;
+			}
+		});
 	}
-
+	
+		
 
 }

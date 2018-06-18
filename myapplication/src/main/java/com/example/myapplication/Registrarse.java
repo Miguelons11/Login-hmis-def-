@@ -67,7 +67,7 @@ public class Registrarse extends Registrarse_ventana implements View {
 				t.commit(); 
 				if(aux==null) {
 					Usuario usuario= usr.registrarse(correo, nombre, contrasena, false, fecha,fecha);
-					Notification.show("Usuario registrado correctamente").setDelayMsec(1000);
+					Notification.show("Usuario registrado correctamente").setDelayMsec(400);
 					Inicio_sesion.id= usuario.getORMID();
 					UI.getCurrent().getNavigator().navigateTo("inicioRegistrado");
 				}else{

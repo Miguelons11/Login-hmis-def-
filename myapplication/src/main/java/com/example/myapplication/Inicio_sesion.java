@@ -53,15 +53,14 @@ public class Inicio_sesion extends Inicio_sesion_ventana implements View {
 
 		
 		if (!usr.getAdmin()) {
-			id = usr.getORMID();
 			id=usr.getORMID();
 			System.out.println(id);
 			UI.getCurrent().getNavigator().navigateTo("inicioRegistrado");
 
 		} else {
-			
+			id = usr.getORMID();
 			UI.getCurrent().getNavigator().navigateTo("inicioAdministrador");
-		
+
 		}
 
 		
